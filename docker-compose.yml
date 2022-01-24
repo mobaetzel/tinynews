@@ -1,0 +1,15 @@
+version: "3.9"
+services:
+  mongo:
+    image: mongo
+    restart: always
+  tinynews:
+    build:
+      dockerfile: ./Dockerfile
+      context: ./
+    depends_on:
+      - mongo
+    environment:
+      TELEGRAM_TOKEN: 'NONE'
+      MONGO_HOST: mongo
+      MONGO_PORT: 27017
